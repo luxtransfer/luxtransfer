@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUX TRANSFER — Пасажирські перевезення</title>
+  <meta name="description" content="Пасажирські перевезення Україна ↔ Європа. Комфортні міжнародні поїздки по всьому ЄС.">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #080808;
+      color: #f5f5f5;
+      line-height: 1.6;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(8,8,8,.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(212,175,55,.2);
+    }
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: #d4af37;
+    }
+    nav {
+      display: flex;
+      gap: 25px;
+      font-size: 14px;
+    }
+    nav a:hover {
+      color: #d4af37;
+    }
+    .telegram {
+      display: inline-block;
+      padding: 12px 18px;
+      border: 1px solid #d4af37;
+      color: #d4af37;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .telegram:hover {
+      background: #d4af37;
+      color: #080808;
+    }
+    .hero {
+      min-height: 720px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 70% 40%, rgba(212,175,55,.16), transparent 35%),
+        #080808;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border: 1px solid rgba(212,175,55,.15);
+      border-radius: 50%;
+      right: -170px;
+      top: 90px;
+    }
+    .hero-content {
+      max-width: 760px;
+      position: relative;
+      z-index: 2;
+    }
+    .label {
+      color: #d4af37;
+      letter-spacing: 3px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+    h1 {
+      font-size: clamp(52px, 9vw, 100px);
+      line-height: .95;
+      letter-spacing: -4px;
+      margin-bottom: 22px;
+    }
+    .gold {
+      color: #d4af37;
+    }
+    .hero h2 {
+      font-size: clamp(24px, 4vw, 40px);
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      max-width: 620px;
+      color: #b8b8b8;
+      font-size: 18px;
+      margin-bottom: 32px;
+    }
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .btn {
+      padding: 15px 24px;
+      border-radius: 30px;
+      font-weight: 700;
+      display: inline-block;
+      border: 1px solid #d4af37;
+    }
+    .btn-primary {
+      background: #d4af37;
+      color: #080808;
+    }
+    .btn-secondary {
+      color: #fff;
+    }
+    section {
+      padding: 100px 0;
+    }
+    .section-title {
+      font-size: clamp(34px, 6vw, 56px);
+      margin-bottom: 18px;
+    }
+    .section-text {
+      color: #999;
+      max-width: 680px;
+      margin-bottom: 45px;
+    }
+    .countries {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .country {
+      padding: 18px;
+      border: 1px solid #242424;
+      background: #101010;
+      border-radius: 12px;
+      transition: .25s;
+    }
+    .country:hover {
+      border-color: #d4af37;
+      transform: translateY(-3px);
+    }
+    .all-eu {
+      margin-top: 22px;
+      color: #aaa;
+      font-size: 14px;
+    }
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .card {
+      background: #101010;
+      border: 1px solid #242424;
+      border-radius: 16px;
+      padding: 30px;
+    }
+    .card h3 {
+      margin-bottom: 10px;
+      color: #d4af37;
+    }
+    .card p {
+      color: #999;
+    }
+    .advantages {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .advantage {
+      padding: 30px;
+      border-left: 2px solid #d4af37;
+      background: #101010;
+    }
+    .advantage h3 {
+      margin-bottom: 8px;
+    }
+    .advantage p {
+      color: #999;
+    }
+    .contacts {
+      max-width: 760px;
+    }
+    .contact {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 22px 0;
+      border-bottom: 1px solid #252525;
+    }
+    .contact span:first-child {
+      color: #d4af37;
+      font-weight: 700;
+    }
+    .contact:hover .contact-value {
+      color: #d4af37;
+    }
+    .cta {
+      text-align: center;
+      background:
+        radial-gradient(circle at center, rgba(212,175,55,.13), transparent 55%),
+        #101010;
+      border-top: 1px solid #222;
+      border-bottom: 1px solid #222;
+    }
+    .cta h2 {
+      font-size: clamp(35px, 6vw, 60px);
+      margin-bottom: 15px;
+    }
+    .cta p {
+      color: #999;
+      margin-bottom: 28px;
+    }
+    footer {
+      padding: 45px 0;
+      border-top: 1px solid #222;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    .footer-info {
+      color: #999;
+      font-size: 14px;
+      line-height: 1.9;
+    }
+    .copyright {
+      color: #555;
+      font-size: 13px;
+      margin-top: 25px;
+    }
+    @media (max-width: 800px) {
+      nav {
+        display: none;
+      }
+      .hero {
+        min-height: 650px;
+      }
+      h1 {
+        letter-spacing: -2px;
+      }
+      .countries {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .services,
+      .advantages {
+        grid-template-columns: 1fr;
+      }
+      section {
+        padding: 75px 0;
+      }
+      .hero p {
+        font-size: 16px;
+      }
+      .contact {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a href="#" class="logo">LUX TRANSFER</a>
+    <nav>
+      <a href="#directions">Напрямки</a>
+      <a href="#services">Послуги</a>
+      <a href="#advantages">Переваги</a>
+      <a href="#contacts">Контакти</a>
+    </nav>
+    <a class="telegram" href="https://t.me/Transfer_Lux" target="_blank">
+      Telegram
+    </a>
+  </div>
+</header>
+<main>
+<section class="hero">
+  <div class="container hero-content">
+    <div class="label">ПАСАЖИРСЬКІ ПЕРЕВЕЗЕННЯ</div>
+    <h1>LUX <span class="gold">TRANSFER</span></h1>
+    <h2>Україна ↔ Європа</h2>
+    <p>
+      Комфортні міжнародні пасажирські перевезення з України
+      по всій території Європейського Союзу.
+    </p>
+    <div class="buttons">
+      <a class="btn btn-primary"
+         href="https://t.me/Transfer_Lux"
+         target="_blank">
+        Замовити поїздку
+      </a>
+      <a class="btn btn-secondary"
+         href="tel:+380930414853">
+        +380 93 041 48 53
+      </a>
+    </div>
+  </div>
+</section>
+<section id="directions">
+  <div class="container">
+    <div class="label">ГЕОГРАФІЯ ПОЇЗДОК</div>
+    <h2 class="section-title">Наші напрямки</h2>
+    <p class="section-text">
+      Здійснюємо поїздки з України по всій території
+      Європейського Союзу.
+    </p>
+    <div class="countries">
+      <div class="country">🇵🇱 Польща</div>
+      <div class="country">🇩🇪 Німеччина</div>
+      <div class="country">🇨🇿 Чехія</div>
+      <div class="country">🇦🇹 Австрія</div>
+      <div class="country">🇳🇱 Нідерланди</div>
+      <div class="country">🇧🇪 Бельгія</div>
+      <div class="country">🇫🇷 Франція</div>
+      <div class="country">🇮🇹 Італія</div>
+      <div class="country">🇪🇸 Іспанія</div>
+      <div class="country">🇵🇹 Португалія</div>
+      <div class="country">🇭🇺 Угорщина</div>
+      <div class="country">🇸🇰 Словаччина</div>
+      <div class="country">🇸🇮 Словенія</div>
+      <div class="country">🇭🇷 Хорватія</div>
+      <div class="country">🇧🇬 Болгарія</div>
+      <div class="country">🇷🇴 Румунія</div>
+    </div>
+    <p class="all-eu">
+      Також здійснюємо поїздки до інших країн ЄС.
+      Напишіть нам — уточнимо можливість поїздки до вашого міста.
+    </p>
+  </div>
+</section>
+<section id="services">
+  <div class="container">
+    <div class="label">ПОСЛУГИ</div>
+    <h2 class="section-title">Що ми пропонуємо</h2>
+    <div class="services">
+      <div class="card">
+        <h3>Міжнародні перевезення</h3>
+        <p>Поїздки між Україною та країнами Європи.</p>
+      </div>
+      <div class="card">
+        <h3>Трансфери</h3>
+        <p>Комфортні трансфери до міст, вокзалів та аеропортів.</p>
+      </div>
+      <div class="card">
+        <h3>Індивідуальні поїздки</h3>
+        <p>Маршрут та час поїздки узгоджуються індивідуально.</p>
+      </div>
+      <div class="card">
+        <h3>Для сімей та груп</h3>
+        <p>Організовуємо комфортні поїздки для сімей та невеликих груп.</p>
+      </div>
+      <div class="card">
+        <h3>Далекі маршрути</h3>
+        <p>Здійснюємо поїздки на далекі відстані по Європі.</p>
+      </div>
+      <div class="card">
+        <h3>Інші міста</h3>
+        <p>Напишіть нам — уточнимо можливість поїздки до потрібного вам міста.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="advantages">
+  <div class="container">
+    <div class="label">ЧОМУ LUX TRANSFER</div>
+    <h2 class="section-title">Переваги</h2>
+    <div class="advantages">
+      <div class="advantage">
+        <h3>Комфорт</h3>
+        <p>Створюємо комфортні умови для поїздки на будь-яку відстань.</p>
+      </div>
+      <div class="advantage">
+        <h3>Надійність</h3>
+        <p>Погоджуємо маршрут та час поїздки заздалегідь.</p>
+      </div>
+      <div class="advantage">
+        <h3>Індивідуальний підхід</h3>
+        <p>Підбираємо оптимальний варіант поїздки під ваш запит.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="contacts">
+  <div class="container">
+    <div class="label">ЗВ'ЯЗОК</div>
+    <h2 class="section-title">Контакти</h2>
+    <div class="contacts">
+      <a class="contact"
+         href="https://t.me/Transfer_Lux"
+         target="_blank">
+        <span>Telegram</span>
+        <span class="contact-value">@Transfer_Lux →</span>
+      </a>
+      <a class="contact"
+         href="tel:+380930414853">
+        <span>Телефон</span>
+        <span class="contact-value">+380 93 041 48 53 →</span>
+      </a>
+      <a class="contact"
+         href="mailto:transferlux01@gmail.com">
+        <span>E-mail</span>
+        <span class="contact-value">transferlux01@gmail.com →</span>
+      </a>
+    </div>
+  </div>
+</section>
+<section class="cta">
+  <div class="container">
+    <h2>Готові до поїздки?</h2>
+    <p>
+      Напишіть нам у Telegram — обговоримо маршрут,
+      дату та деталі поїздки.
+    </p>
+    <a class="btn btn-primary"
+       href="https://t.me/Transfer_Lux"
+       target="_blank">
+      Написати в Telegram
+    </a>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="logo">LUX TRANSFER</div>
+        <div class="footer-info">
+          Україна ↔ Європа<br>
+          Пасажирські перевезення
+        </div>
+      </div>
+      <div class="footer-info">
+        +380 93 041 48 53<br>
+        transferlux01@gmail.com<br>
+        Telegram: @Transfer_Lux
+      </div>
+    </div>
+    <div class="copyright">
+      © 2026 LUX TRANSFER. Всі права захищені.
+    </div>
+  </div>
+</footer>
+</body>
+</html>
